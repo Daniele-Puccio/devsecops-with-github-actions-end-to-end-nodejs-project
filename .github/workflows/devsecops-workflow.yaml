@@ -19,14 +19,14 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         args: >
-          -Dsonar.organization=devsecopsgithubactionsnodejsproject
-          -Dsonar.projectKey=devsecopsganodejsprojectkey
+          -Dsonar.organization=devsecops-github-actions-all
+          -Dsonar.projectKey=Daniele-Puccio
   security:
     runs-on: ubuntu-latest
     needs: build
     name: Run the SCA scan on the source code
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - name: RunSnyk to check for vulnerabilities
         uses: snyk/actions/node@master
         continue-on-error: true
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: main
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
